@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "build")));
 
 // Setting the port for the server to listen on
 const port = process.env.PORT;
@@ -20,6 +23,7 @@ const passportJWT = require('./config/passport-jwt-strategy.js');
 
 
 
+app.use(express.static(path.join(__dirname, "dist")));
 app.use(cors());
 
 app.use(bodyParser.json());
